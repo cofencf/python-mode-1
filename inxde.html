@@ -1,0 +1,13 @@
+     import subprocess
+     import shlex
+
+     java_command = "java -jar your_java_program.jar your_java_arguments"
+     command = shlex.split(java_command)
+
+     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+     stdout, stderr = process.communicate()
+
+     if process.returncode == 0:
+         print("Java program output:", stdout.decode())
+     else:
+         print("Java program error:", stderr.decode())
